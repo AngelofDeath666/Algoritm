@@ -13,6 +13,7 @@ public class ringOfFire {
         n = sc.nextInt(); // Total student
         c = sc.nextInt(); // Kill count
         k = sc.nextInt(); // Number of survivors
+        sc.close();
 
         //Lav array af integers, aka elever
         boolean[] students = new boolean[n];

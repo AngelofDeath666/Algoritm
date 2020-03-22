@@ -9,7 +9,7 @@ public class Caesarplusplus {
 
 // input til output
         Scanner sc = new Scanner(System.in);
-        Stack<Character> stack = new Stack<Character>();
+        Stack<Character> myStack = new Stack<Character>();
 
         // tager den første integer og læser den
         String length = sc.nextLine();
@@ -17,47 +17,71 @@ public class Caesarplusplus {
 
         // tager resten og læser det
         String input = sc.nextLine();
+        sc.close();
+
+
         input = input.replaceAll("\\s", "");
 
+        // Pushing every character of the string into the stack, maybe not needed :3
+        char[] ch = input.toCharArray();
+
         // genere stacken
-        for (int i=0; i<len; i++){
+        int temp = 0;
+        int tot = 0;
+        int cipher;
 
-            boolean yesInt = false;
-            int a;
+        for (int i = 0; i < ch.length; i++) {
+            if (Character.isLetter(ch[i])) {
+                ch[i] = (char) ((ch[i] + tot - 65) % 26 + 65);
+                tot = tot + temp;
+                temp = 0;
 
-            try {
-                a= Character.getNumericValue(input.charAt(i));
-                yesInt = true;
-            }catch (Exception e){
-                System.out.println("Not an int");
+//                if (i> 1 && Character.isDigit(ch[i-1])){
+//                    myStack.pop();
+//                }
+
+            } else if (Character.isDigit(ch[i])) {
+                cipher = Integer.parseInt(String.valueOf(ch[i]));
+
+                if (Character.isDigit(ch[i - 1]) && i > 1) {
+                    temp = temp * 10 + cipher;
+                    cipher = 0;
+                    //myStack.pop();
+                }
+                temp = temp + cipher;
+                // if previous char was an int multiply previous int by 10 and add current int
+
+//
+
             }
 
-            if (input.charAt(i) == 94) { //Tjekker for pop  (^)
+            else { // pop  (^)
 
-                if (yesInt == true){
-                    System.out.println("Move numbers: " + a);
-                }
 
-                char pop = stack.pop(); // todo
-                System.out.println("Pop: " +  pop); //todo
+
+                char pop = myStack.pop();
+                //System.out.println("Pop: " + pop);
+                tot = tot + temp;
+                temp = 0;
 
                 continue;
             }
 
-            stack.push(input.charAt(i));
+            char push = myStack.push(ch[i]);
+            //System.out.println("Push: " + push);
+            if (i> 1 && Character.isDigit(ch[i-1])){
+                myStack.pop();
+            }
 
-            if (input.charAt())
+
 
         }
-
-    }
-    // metode for at printe stacken // todo
-    public static void stackPrint (char [] stack) {
-        for (int p = 0 ; i < n; i++) {
-
-            System.out.println();
+        Object[] blyat = myStack.toArray();
+        for (int p = 0; p < blyat.length; p++) {
+            System.out.print(blyat[p]);
+            if (p != blyat.length - 1)
+                System.out.print(" ");
         }
     }
-
 
 }

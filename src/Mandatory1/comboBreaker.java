@@ -12,7 +12,7 @@ public class comboBreaker {
 
         String length = sc.nextLine();
         String input = sc.nextLine();
-
+        sc.close();
         int len = Integer.parseInt(length);
 
         char[] moves = new char[len];
