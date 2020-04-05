@@ -63,15 +63,19 @@ public class HazardousHands {
         String handshakesMade = sc.nextLine();
         int handshakes = Integer.parseInt(handshakesMade);
 
-        String[] tokens = new String[handshakes*2];
+        ArrayList<String> blin = new ArrayList<>();
+        String[] tokens = new String[2];
         int[] blyat = new int[tokens.length];
 
-        while (sc.hasNextLine()){
+        for (int i = 0 ; i < handshakes ; i++){
             tokens = sc.nextLine().split("\\s");
-            System.out.println(Arrays.toString(tokens)); //todo delete
-            for (int i = 0; i < tokens.length; i++ ){
-                blyat[i] = Integer.parseInt(tokens[i]);
+            blin.addAll(Arrays.asList(tokens));
+            for (int j = 0; j < blin.size(); j++ ){
+                blyat[j] = Integer.parseInt(blin.get(i));
+                System.out.println(Arrays.toString(blyat)); //todo delete
             }
+
+            System.out.println(Arrays.toString(tokens)); //todo delete
 
 
         }
