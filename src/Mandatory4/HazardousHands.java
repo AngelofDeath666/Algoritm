@@ -1,23 +1,23 @@
 package Mandatory4;
-import java.lang.reflect.Array;
+import java.util.LinkedList;
 import java.util.*;
 
 public class HazardousHands {
 
-    static class VirusCarriers{
+    static class VirusCarriers {
         int vertices;
-        int chain = 0;
+        int chain;
         LinkedList<Integer>[] list;
 
-    }
 
-    VirusCarriers(int vertices) {
-        this.vertices = vertices;
-        list = new LinkedList[vertices];
-        for (int i = 0; i < vertices; i++) {
-            list[i] = new LinkedList<>();
+        VirusCarriers(int vertices){
+            this.vertices = vertices;
+            list = new LinkedList[vertices];
+            for (int i = 0; i <vertices ; i++) {
+                list[i] = new LinkedList<>();
+            }
         }
-    }
+
 
     public void addEdge(int source, int destination) {
         //add edge
@@ -34,6 +34,7 @@ public class HazardousHands {
     }
 
     public void dfs(int start, boolean[] visited){
+            chain = 0;
         visited[start] = true;
         for (int i = 0; i < list[start].size(); i++){
             int destination = list[start].get(i);
@@ -41,6 +42,7 @@ public class HazardousHands {
                 dfs(destination,visited);
             }
             chain += 1;
+            System.out.println(chain);
         }
     }
 
@@ -75,8 +77,15 @@ public class HazardousHands {
         }
         sc.close();
 
-        vertices = conPeople;
+        int vertices = conPeople;
+        VirusCarriers virusCarriers = new VirusCarriers(vertices);
         for (int i = 0 ; i < (blyat.length/2); i++){
+            virusCarriers.addEdge(blyat[i],blyat[i+1]);
+            i =+1;
+
+        }
+
+        virusCarriers.DFSRecursion(carrier);
 
         }
 
