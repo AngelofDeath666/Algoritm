@@ -2,12 +2,16 @@ package Mandatory4;
 import java.lang.reflect.Array;
 import java.util.*;
 
-public class VirusCarriers {
-    int vertices;
-    int chain = 0;
-    LinkedList<Integer>[] list;
+public class HazardousHands {
 
-    public VirusCarriers(int vertices) {
+    static class VirusCarriers{
+        int vertices;
+        int chain = 0;
+        LinkedList<Integer>[] list;
+
+    }
+
+    VirusCarriers(int vertices) {
         this.vertices = vertices;
         list = new LinkedList[vertices];
         for (int i = 0; i < vertices; i++) {
@@ -50,26 +54,31 @@ public class VirusCarriers {
         int carrier = Integer.parseInt(virusCarrier);
 
         //count of conference goers
-        String confernceGoers = sc.nextLine();
-        int conPeople = Integer.parseInt(confernceGoers);
+        String conferenceGoers = sc.nextLine();
+        int conPeople = Integer.parseInt(conferenceGoers);
 
         //handshakes made
         String handshakesMade = sc.nextLine();
         int handshakes = Integer.parseInt(handshakesMade);
 
-        while (sc.hasNextLine()){
-            String[] tokens = sc.nextLine().split("\\s");
-            System.out.println(Arrays.toString(tokens));
-            for (int i = 0; i < tokens.length; i++ ){
-                int[] a = new int[0];
-                a[i] = Integer.parseInt(tokens[i]);
-            }
+        String[] tokens = new String[handshakes*2];
+        int[] blyat = new int[tokens.length];
 
+        while (sc.hasNextLine()){
+            tokens = sc.nextLine().split("\\s");
+            System.out.println(Arrays.toString(tokens)); //todo delete
+            for (int i = 0; i < tokens.length; i++ ){
+                blyat[i] = Integer.parseInt(tokens[i]);
+            }
 
 
         }
         sc.close();
 
+        vertices = conPeople;
+        for (int i = 0 ; i < (blyat.length/2); i++){
+
+        }
 
     }
 }
